@@ -70,5 +70,5 @@ password
 
 ## Responsable
 
-Persona 1 – Preparación del entorno y GitHub.
+David Mendieta – Preparación del entorno y GitHub.
 
