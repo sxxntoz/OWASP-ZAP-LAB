@@ -60,4 +60,4 @@ La primera carga puede tardar entre 1 y 3 minutos debido a la inicialización de
 
 ## Responsable
 
-Persona 1 – Preparación del entorno y GitHub.
+David Mendieta – Preparación del entorno y GitHub.
