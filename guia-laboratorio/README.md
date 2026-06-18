@@ -1,10 +1,10 @@
 # Guía del Laboratorio
 
-## Detección de Ataques Web OWASP mediante OWASP ZAP (OWASP Top 10)
+# Detección de Ataques Web OWASP mediante OWASP ZAP (OWASP Top 10)
 
 **Responsable:** Walter David Mendieta Napan
 
-**Rol:** Persona 1 - Preparación del entorno y GitHub
+**Rol:** Persona 1 – Preparación del entorno y GitHub
 
 ---
 
@@ -35,9 +35,7 @@ OWASP-ZAP-LAB
 
 ### Evidencia
 
-```text
 ![Creación del repositorio](../evidencias/capturas/01-repositorio-cread.png)
-```
 
 ---
 
@@ -45,9 +43,28 @@ OWASP-ZAP-LAB
 
 ## 2.1 Crear las carpetas principales
 
-Crear la siguiente estructura dentro del repositorio:
+Para que cualquier integrante del equipo pueda recrear el laboratorio, se recomienda crear la misma estructura de carpetas utilizada durante el desarrollo de la práctica.
 
+### Opción 1. Crear las carpetas desde GitHub
 
+1. Ingresar al repositorio creado.
+2. Hacer clic en **Add file → Create new file**.
+3. Escribir la ruta completa del archivo para que GitHub cree automáticamente las carpetas.
+
+Ejemplos:
+
+* guia-laboratorio/README.md
+* configuracion/dvwa/README.md
+* configuracion/juiceshop/README.md
+* configuracion/webgoat/README.md
+* evidencias/capturas/README.md
+* resultados/README.md
+* logs/README.md
+
+4. Agregar un contenido básico al archivo.
+5. Hacer clic en **Commit changes**.
+
+### Estructura utilizada
 
 ```text
 OWASP-ZAP-LAB
@@ -78,16 +95,9 @@ OWASP-ZAP-LAB
 └── .gitignore
 ```
 
-## 2.2 Confirmar los cambios
-
-1. Guardar la estructura.
-2. Realizar Commit Changes.
-
 ### Evidencia
 
-```text
-02-estructura-repositorio.png
-```
+![Estructura del repositorio](../evidencias/capturas/02-estructura-repositorio.png)
 
 ---
 
@@ -121,9 +131,7 @@ Virtualización: Habilitado
 
 ### Evidencia
 
-```text
-03-verificacion-virtualizacion.png
-```
+![Verificación de virtualización](../evidencias/capturas/03-verificacion-virtualizacion.png)
 
 ---
 
@@ -141,6 +149,8 @@ https://www.docker.com/products/docker-desktop/
 Windows AMD64
 ```
 
+---
+
 ## 4.2 Ejecutar el instalador
 
 1. Ejecutar el archivo descargado.
@@ -154,9 +164,7 @@ All-users installation
 
 ### Evidencia
 
-```text
-04-ejecucion-instalador-docker.png
-```
+![Ejecución del instalador Docker](../evidencias/capturas/04-ejecucion-instalador-docker.png)
 
 ---
 
@@ -167,25 +175,67 @@ All-users installation
 
 ### Evidencia
 
-```text
-05-instalacion-completa-docker.png
-```
+![Instalación completada](../evidencias/capturas/05-instalacion-completa-docker.png)
 
 ---
 
 ## 4.4 Instalar WSL2
 
-Al reiniciar el sistema:
+Docker Desktop requiere WSL2 para ejecutar contenedores Linux.
 
-1. Docker detectará que WSL no está instalado.
-2. Se iniciará automáticamente el proceso de instalación.
-3. Esperar la descarga e instalación de Ubuntu.
+### Abrir CMD como Administrador
+
+Presionar:
+
+```text
+Inicio → CMD → Ejecutar como administrador
+```
+
+### Instalar WSL
+
+Ejecutar:
+
+```bash
+wsl --install
+```
+
+Este comando:
+
+* Instala Windows Subsystem for Linux.
+* Descarga Ubuntu.
+* Configura WSL2.
+* Prepara el sistema para Docker Desktop.
+
+### Reiniciar el equipo
+
+Una vez finalizada la instalación reiniciar Windows.
+
+### Verificar la instalación de WSL
+
+Ejecutar:
+
+```bash
+wsl --version
+```
+
+Resultado esperado:
+
+```text
+WSL version: X.X.X
+Kernel version: X.X.X
+```
+
+### Evidencia
+
+![Verificación de virtualización](../evidencias/capturas/03-verificacion-virtualizacion.png)
 
 ---
 
 ## 4.5 Configurar Ubuntu
 
-1. Crear usuario Linux.
+Después del reinicio Ubuntu iniciará automáticamente.
+
+### Crear usuario Linux
 
 Ejemplo:
 
@@ -193,15 +243,23 @@ Ejemplo:
 Usuario: david
 ```
 
-2. Crear contraseña.
+### Crear contraseña
 
-3. Finalizar la configuración inicial.
+Ingresar una contraseña y confirmarla.
+
+### Finalizar configuración
+
+Esperar hasta visualizar el prompt del sistema Ubuntu.
 
 ---
 
-## 4.6 Verificar Docker
+## 4.6 Verificar Docker Desktop
 
-Abrir CMD y ejecutar:
+Abrir CMD.
+
+### Verificar versión de Docker
+
+Ejecutar:
 
 ```bash
 docker --version
@@ -210,14 +268,28 @@ docker --version
 Resultado esperado:
 
 ```text
-Docker version XX.X.X
+Docker version 29.5.3
 ```
+
+### Verificar que Docker esté funcionando
+
+Ejecutar:
+
+```bash
+docker ps
+```
+
+Resultado esperado:
+
+```text
+CONTAINER ID   IMAGE   COMMAND   CREATED   STATUS   PORTS   NAMES
+```
+
+Si aparece la tabla anterior significa que Docker Engine está funcionando correctamente.
 
 ### Evidencia
 
-```text
-06-docker-instalado.png
-```
+![Docker instalado](../evidencias/capturas/06-docker-instalado.png)
 
 ---
 
@@ -225,9 +297,7 @@ Docker version XX.X.X
 
 ## 5.1 Descargar la imagen Docker
 
-Abrir CMD como administrador.
-
-Ejecutar:
+Abrir CMD y ejecutar:
 
 ```bash
 docker pull vulnerables/web-dvwa
@@ -235,9 +305,7 @@ docker pull vulnerables/web-dvwa
 
 ### Evidencia
 
-```text
-07-descargar-imagen-DVWA.png
-```
+![Descarga imagen DVWA](../evidencias/capturas/07-descargar-imagen-DVWA.png)
 
 ---
 
@@ -251,9 +319,7 @@ docker run -d --name dvwa -p 8080:80 vulnerables/web-dvwa
 
 ### Evidencia
 
-```text
-08-ejecutar-DVWA.png
-```
+![Ejecución DVWA](../evidencias/capturas/08-ejecutar-DVWA.png)
 
 ---
 
@@ -273,9 +339,7 @@ dvwa
 
 ### Evidencia
 
-```text
-09-dvwa-contenedor-activo.png
-```
+![Contenedor DVWA activo](../evidencias/capturas/09-dvwa-contenedor-activo.png)
 
 ---
 
@@ -289,9 +353,7 @@ http://localhost:8080
 
 ### Evidencia
 
-```text
-10-dvwa-funcionando.png
-```
+![DVWA funcionando](../evidencias/capturas/10-dvwa-funcionando.png)
 
 ---
 
@@ -307,9 +369,7 @@ docker pull bkimminich/juice-shop
 
 ### Evidencia
 
-```text
-11-descargar-juice-shop.png
-```
+![Descarga Juice Shop](../evidencias/capturas/11-descargar-juice-shop.png)
 
 ---
 
@@ -323,9 +383,7 @@ docker run -d --name juice-shop -p 3000:3000 bkimminich/juice-shop
 
 ### Evidencia
 
-```text
-12-ejecutar-juice-shop.png
-```
+![Ejecución Juice Shop](../evidencias/capturas/12-ejecutar-juice-shop.png)
 
 ---
 
@@ -345,9 +403,7 @@ juice-shop
 
 ### Evidencia
 
-```text
-13-juice-contenedor-activo.png
-```
+![Contenedor Juice Shop activo](../evidencias/capturas/13-juice-contenedor-activo.png)
 
 ---
 
@@ -361,9 +417,7 @@ http://localhost:3000
 
 ### Evidencia
 
-```text
-14-juice-funcionando.png
-```
+![Juice Shop funcionando](../evidencias/capturas/14-juice-funcionando.png)
 
 ---
 
@@ -379,9 +433,7 @@ docker pull webgoat/webgoat
 
 ### Evidencia
 
-```text
-15-descargar-webgoat.png
-```
+![Descarga WebGoat](../evidencias/capturas/15-descargar-webgoat.png)
 
 ---
 
@@ -395,9 +447,7 @@ docker run -d --name webgoat -p 8081:8080 webgoat/webgoat
 
 ### Evidencia
 
-```text
-16-ejecutar-webgoat.png
-```
+![Ejecución WebGoat](../evidencias/capturas/16-ejecutar-webgoat.png)
 
 ---
 
@@ -417,9 +467,7 @@ webgoat
 
 ### Evidencia
 
-```text
-17-webgoat-contenedor-activo.png
-```
+![Contenedor WebGoat activo](../evidencias/capturas/17-webgoat-contenedor-activo.png)
 
 ---
 
@@ -433,9 +481,7 @@ http://localhost:8081/WebGoat
 
 ### Evidencia
 
-```text
-18-webgoat-funcionando.png
-```
+![WebGoat funcionando](../evidencias/capturas/18-webgoat-funcionando.png)
 
 ---
 
@@ -453,4 +499,5 @@ Al finalizar esta fase deben encontrarse disponibles:
 * Estructura del proyecto creada.
 
 La Persona 2 podrá utilizar estas aplicaciones para realizar el reconocimiento mediante OWASP ZAP.
+
 
