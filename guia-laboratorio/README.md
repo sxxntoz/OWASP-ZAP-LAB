@@ -2,10 +2,6 @@
 
 # Detección de Ataques Web OWASP mediante OWASP ZAP (OWASP Top 10)
 
-**Responsable:** Walter David Mendieta Napan
-
-**Rol:** Persona 1 – Preparación del entorno y GitHub
-
 ---
 
 # Paso 1. Crear el repositorio en GitHub
