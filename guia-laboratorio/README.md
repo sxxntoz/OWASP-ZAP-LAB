@@ -487,19 +487,166 @@ http://localhost:8081/WebGoat
 
 ---
 
+# Paso 8. Instalar OWASP ZAP
+
+## 8.1 Ejecutar el instalador
+
+1. Descargar OWASP ZAP desde el sitio oficial.
+2. Ejecutar el instalador en Windows.
+
+### Evidencia
+
+![Ejecución del instalador ZAP](../evidencias/capturas/21-ejecutar-instalador-zap.png)
+
+---
+
+## 8.2 Instalar OWASP ZAP
+
+1. Aceptar los términos de licencia.
+2. Continuar con la instalación utilizando la configuración predeterminada.
+3. Esperar a que finalice el proceso.
+
+### Evidencia
+
+![Instalación de ZAP](../evidencias/capturas/22-instalando-zap.png)
+
+---
+
+## 8.3 Finalizar la instalación
+
+1. Una vez concluida la instalación seleccionar **Finish**.
+2. Esperar a que la aplicación se inicie automáticamente.
+
+### Evidencia
+
+![Instalación finalizada](../evidencias/capturas/23-instalacion-zap-finalizado.png)
+
+---
+
+## 8.4 Abrir OWASP ZAP
+
+1. Iniciar OWASP ZAP.
+2. Aceptar la configuración predeterminada de la sesión.
+3. Verificar que aparezca la interfaz principal de la herramienta.
+
+### Evidencia
+
+![OWASP ZAP abierto](../evidencias/capturas/24-zap-abierto.png)
+
+---
+
+# Paso 9. Descubrimiento de recursos mediante Spider
+
+La herramienta **Spider** permite recorrer automáticamente una aplicación web para descubrir enlaces, páginas, directorios y recursos disponibles. Esta información servirá como base para los análisis de seguridad posteriores.
+
+---
+
+## 9.1 Ejecutar Spider sobre DVWA
+
+1. Seleccionar el sitio DVWA dentro de OWASP ZAP.
+2. Ir a **Attack → Spider**.
+3. Ejecutar el rastreo completo de la aplicación.
+4. Esperar hasta que finalice el proceso.
+
+### Evidencia
+
+![Spider DVWA](../evidencias/capturas/25-dvwa-spider.png)
+
+---
+
+## 9.2 Ejecutar Spider sobre OWASP Juice Shop
+
+1. Seleccionar el sitio OWASP Juice Shop.
+2. Ejecutar la herramienta **Spider**.
+3. Esperar a que termine el descubrimiento automático de recursos.
+
+### Evidencia
+
+![Spider Juice Shop](../evidencias/capturas/26-juiceshop-spider.png)
+
+---
+
+## 9.3 Ejecutar Spider sobre WebGoat
+
+1. Seleccionar el sitio WebGoat.
+2. Ejecutar la herramienta **Spider**.
+3. Verificar que OWASP ZAP descubra las rutas disponibles de la aplicación.
+
+### Evidencia
+
+![Spider WebGoat](../evidencias/capturas/27-webgoat-spider.png)
+
+---
+
+# Paso 10. Descubrimiento de contenido dinámico mediante AJAX Spider
+
+Las aplicaciones modernas utilizan JavaScript para cargar contenido dinámicamente. La herramienta **AJAX Spider** permite identificar estos recursos simulando la navegación de un usuario dentro de la aplicación.
+
+---
+
+## 10.1 Ejecutar AJAX Spider sobre DVWA
+
+1. Seleccionar el sitio DVWA.
+2. Ir a **Attack → AJAX Spider**.
+3. Esperar a que finalice el análisis.
+
+### Evidencia
+
+![AJAX Spider DVWA](../evidencias/capturas/28-ajax-spider-dvwa.png)
+
+---
+
+## 10.2 Ejecutar AJAX Spider sobre OWASP Juice Shop
+
+1. Seleccionar el sitio OWASP Juice Shop.
+2. Ejecutar **AJAX Spider**.
+3. Esperar hasta que concluya el proceso.
+
+### Evidencia
+
+![AJAX Spider Juice Shop](../evidencias/capturas/29-ajax-spider-juiceshop.png)
+
+---
+
+## 10.3 Ejecutar AJAX Spider sobre WebGoat
+
+1. Seleccionar el sitio WebGoat.
+2. Ejecutar **AJAX Spider**.
+3. Esperar a que finalice el rastreo dinámico.
+
+### Evidencia
+
+![AJAX Spider WebGoat](../evidencias/capturas/30-ajax-spider-webgoat.png)
+
+---
+
+# Paso 11. Revisar las alertas pasivas
+
+Durante el reconocimiento, OWASP ZAP realiza automáticamente un análisis pasivo de las respuestas del servidor, detectando posibles problemas de configuración sin alterar el funcionamiento de las aplicaciones.
+
+## 11.1 Visualizar las Passive Alerts
+
+1. Abrir el panel **Alerts**.
+2. Revisar las alertas clasificadas por nivel de riesgo.
+3. Verificar que se hayan generado hallazgos iniciales para las aplicaciones analizadas.
+
+### Evidencia
+
+![Passive Alerts](../evidencias/capturas/31-passive-alerts.png)
+
+---
+
 # Entregables para la Persona 2
 
-Al finalizar esta fase deben encontrarse disponibles:
+Al finalizar esta fase deberán encontrarse disponibles:
 
-* Repositorio GitHub configurado.
-* Docker Desktop funcionando correctamente.
-* WSL2 instalado.
-* DVWA operativo.
-* OWASP Juice Shop operativo.
-* WebGoat operativo.
-* Evidencias documentadas.
-* Estructura del proyecto creada.
+* OWASP ZAP instalado correctamente.
+* Las aplicaciones DVWA, OWASP Juice Shop y WebGoat registradas en OWASP ZAP.
+* Reconocimiento mediante **Spider** realizado.
+* Reconocimiento mediante **AJAX Spider** realizado.
+* Alertas pasivas generadas correctamente.
+* Evidencias documentadas de cada actividad desarrollada.
 
-La Persona 2 podrá utilizar estas aplicaciones para realizar el reconocimiento mediante OWASP ZAP.
+La Persona 3 utilizará la información recopilada durante esta fase para ejecutar los análisis activos (Active Scan) y evaluar las vulnerabilidades correspondientes al OWASP Top 10.
 
 
