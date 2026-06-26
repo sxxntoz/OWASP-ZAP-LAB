@@ -550,7 +550,7 @@ La herramienta **Spider** permite recorrer automáticamente una aplicación web 
 
 ### Evidencia
 
-![Spider DVWA](../evidencias/capturas/25-dvwa-spider.png)
+![Spider DVWA](../evidencias/capturas/25-dwa-spider.png)
 
 ---
 
