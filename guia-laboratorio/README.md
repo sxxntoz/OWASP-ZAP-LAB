@@ -202,6 +202,12 @@ Este comando:
 * Configura WSL2.
 * Prepara el sistema para Docker Desktop.
 
+### Evidencia
+
+![Ejecución del instalador Docker](../evidencias/capturas/19-instalación-ubuntu.png)
+
+---
+
 ### Reiniciar el equipo
 
 Una vez finalizada la instalación reiniciar Windows.
@@ -223,7 +229,7 @@ Kernel version: X.X.X
 
 ### Evidencia
 
-![Verificación de virtualización](../evidencias/capturas/03-verificacion-virtualizacion.png)
+![Verificación de virtualización](../evidencias/capturas/20-verificar-wls.png)
 
 ---
 
