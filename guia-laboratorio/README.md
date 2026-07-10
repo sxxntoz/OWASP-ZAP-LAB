@@ -775,7 +775,7 @@ Attack → Spider
 
 ### Evidencia
 
-![Spider DVWA](../evidencias/capturas/33-spider-dvwa.png)
+![Spider DVWA](../evidencias/capturas/25-dwa-spider.png)
 
 ---
 
@@ -795,7 +795,7 @@ Attack → Spider
 
 ### Evidencia
 
-![Spider Juice Shop](../evidencias/capturas/34-spider-juiceshop.png)
+![Spider Juice Shop](../evidencias/capturas/26-juiceshop-spider.png)
 
 ---
 
@@ -815,7 +815,7 @@ Attack → Spider
 
 ### Evidencia
 
-![Spider WebGoat](../evidencias/capturas/35-spider-webgoat.png)
+![Spider WebGoat](../evidencias/capturas/27-webgoat-spider.png)
 
 ---
 
@@ -841,7 +841,7 @@ Attack → AJAX Spider
 
 ### Evidencia
 
-![AJAX Spider DVWA](../evidencias/capturas/36-ajax-dvwa.png)
+![AJAX Spider DVWA](../evidencias/capturas/28-ajax-spider-dvwa.png)
 
 ---
 
@@ -861,7 +861,7 @@ Attack → AJAX Spider
 
 ### Evidencia
 
-![AJAX Spider Juice Shop](../evidencias/capturas/37-ajax-juiceshop.png)
+![AJAX Spider Juice Shop](../evidencias/capturas/29-ajax-spider-juiceshop.png)
 
 ---
 
@@ -881,7 +881,7 @@ Attack → AJAX Spider
 
 ### Evidencia
 
-![AJAX Spider WebGoat](../evidencias/capturas/38-ajax-webgoat.png)
+![AJAX Spider WebGoat](../evidencias/capturas/30-ajax-spider-webgoat.png)
 
 ---
 
@@ -930,7 +930,7 @@ Entre las alertas identificadas se encontraron:
 
 ### Evidencia
 
-![Alertas pasivas](../evidencias/capturas/40-alertas-pasivas.png)
+![Alertas pasivas](../evidencias/capturas/31-passive-alerts.png)
 
 ---
 
