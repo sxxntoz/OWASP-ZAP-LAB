@@ -535,104 +535,402 @@ http://localhost:8081/WebGoat
 
 ---
 
-# Paso 9. Descubrimiento de recursos mediante Spider
+# Paso 9. Configuración previa de OWASP ZAP
 
-La herramienta **Spider** permite recorrer automáticamente una aplicación web para descubrir enlaces, páginas, directorios y recursos disponibles. Esta información servirá como base para los análisis de seguridad posteriores.
+Antes de iniciar el reconocimiento de las aplicaciones vulnerables es necesario configurar correctamente OWASP ZAP para evitar conflictos con los puertos utilizados por los laboratorios.
 
 ---
 
-## 9.1 Ejecutar Spider sobre DVWA
+## 9.1 Configurar el Proxy Local de OWASP ZAP
 
-1. Seleccionar el sitio DVWA dentro de OWASP ZAP.
-2. Ir a **Attack → Spider**.
-3. Ejecutar el rastreo completo de la aplicación.
-4. Esperar hasta que finalice el proceso.
+Por defecto OWASP ZAP utiliza el puerto `8080` para su proxy local. Sin embargo, DVWA también utiliza este puerto, generando conflictos durante la navegación y el reconocimiento automático.
+
+Para evitar este problema se recomienda modificar el puerto del proxy de OWASP ZAP.
+
+1. Abrir OWASP ZAP.
+2. Ir al menú:
+
+```text
+Herramientas → Opciones → Servidores/Proxies Locales
+```
+
+3. Ubicar la configuración:
+
+```text
+Proxy Principal
+```
+
+4. Cambiar el puerto:
+
+```text
+8080 → 8090
+```
+
+5. Guardar la configuración.
 
 ### Evidencia
 
-![Spider DVWA](../evidencias/capturas/25-dwa-spider.png)
+![Configuración del Proxy Local](../evidencias/capturas/25-configuracion-proxy-zap.png)
 
 ---
 
-## 9.2 Ejecutar Spider sobre OWASP Juice Shop
+## 9.2 Iniciar el navegador controlado por OWASP ZAP
 
-1. Seleccionar el sitio OWASP Juice Shop.
-2. Ejecutar la herramienta **Spider**.
-3. Esperar a que termine el descubrimiento automático de recursos.
+Para garantizar que todo el tráfico sea interceptado correctamente, se utilizará el navegador lanzado directamente desde OWASP ZAP.
+
+1. Ir a la pestaña:
+
+```text
+Exploración Manual
+```
+
+2. En el campo URL ingresar:
+
+```text
+http://localhost:8080
+```
+
+3. Seleccionar el navegador:
+
+```text
+Chrome
+```
+
+4. Hacer clic en:
+
+```text
+Iniciar Navegador
+```
+
+El navegador será iniciado automáticamente utilizando el proxy configurado por OWASP ZAP.
 
 ### Evidencia
 
-![Spider Juice Shop](../evidencias/capturas/26-juiceshop-spider.png)
+![Navegador iniciado desde ZAP](../evidencias/capturas/26-navegador-zap.png)
 
 ---
 
-## 9.3 Ejecutar Spider sobre WebGoat
+# Paso 10. Registro de aplicaciones en OWASP ZAP
 
-1. Seleccionar el sitio WebGoat.
-2. Ejecutar la herramienta **Spider**.
-3. Verificar que OWASP ZAP descubra las rutas disponibles de la aplicación.
+Durante esta fase se registrarán las aplicaciones vulnerables dentro del árbol de sitios de OWASP ZAP.
+
+---
+
+## 10.1 Registrar DVWA
+
+1. Acceder desde el navegador iniciado por ZAP a:
+
+```text
+http://localhost:8080
+```
+
+2. Iniciar sesión utilizando las credenciales predeterminadas:
+
+```text
+Usuario: admin
+Contraseña: password
+```
 
 ### Evidencia
 
-![Spider WebGoat](../evidencias/capturas/27-webgoat-spider.png)
+![Login DVWA](../evidencias/capturas/27-login-dvwa.png)
 
 ---
 
-# Paso 10. Descubrimiento de contenido dinámico mediante AJAX Spider
+## 10.2 Configurar el nivel de seguridad de DVWA
 
-Las aplicaciones modernas utilizan JavaScript para cargar contenido dinámicamente. La herramienta **AJAX Spider** permite identificar estos recursos simulando la navegación de un usuario dentro de la aplicación.
+1. Ingresar al módulo:
 
----
+```text
+DVWA Security
+```
 
-## 10.1 Ejecutar AJAX Spider sobre DVWA
+2. Seleccionar el nivel:
 
-1. Seleccionar el sitio DVWA.
-2. Ir a **Attack → AJAX Spider**.
-3. Esperar a que finalice el análisis.
+```text
+Low
+```
+
+3. Presionar:
+
+```text
+Submit
+```
+
+Este nivel permitirá que las vulnerabilidades se encuentren disponibles durante las siguientes fases del laboratorio.
 
 ### Evidencia
 
-![AJAX Spider DVWA](../evidencias/capturas/28-ajax-spider-dvwa.png)
+![DVWA Security Low](../evidencias/capturas/28-dvwa-security-low.png)
 
 ---
 
-## 10.2 Ejecutar AJAX Spider sobre OWASP Juice Shop
+## 10.3 Navegar manualmente por DVWA
 
-1. Seleccionar el sitio OWASP Juice Shop.
-2. Ejecutar **AJAX Spider**.
-3. Esperar hasta que concluya el proceso.
+Con el objetivo de registrar rutas y recursos adicionales dentro de OWASP ZAP se recorrieron manualmente los principales módulos vulnerables de la aplicación.
+
+Se accedió a:
+
+- Brute Force
+- Command Injection
+- SQL Injection
+- SQL Injection Blind
+- XSS Reflected
+- XSS Stored
+- File Upload
+- CSRF
+- Weak Session IDs
 
 ### Evidencia
 
-![AJAX Spider Juice Shop](../evidencias/capturas/29-ajax-spider-juiceshop.png)
+![Navegación manual DVWA](../evidencias/capturas/29-dvwa-manual-browse.png)
 
 ---
 
-## 10.3 Ejecutar AJAX Spider sobre WebGoat
+## 10.4 Registrar OWASP Juice Shop
 
-1. Seleccionar el sitio WebGoat.
-2. Ejecutar **AJAX Spider**.
-3. Esperar a que finalice el rastreo dinámico.
+Acceder a:
+
+```text
+http://localhost:3000
+```
+
+Recorrer las principales funcionalidades:
+
+- Catálogo de productos
+- Buscador
+- Login
+- Carrito de compras
+- Menú lateral
 
 ### Evidencia
 
-![AJAX Spider WebGoat](../evidencias/capturas/30-ajax-spider-webgoat.png)
+![Registro Juice Shop](../evidencias/capturas/30-juiceshop-registrado.png)
 
 ---
 
-# Paso 11. Revisar las alertas pasivas
+## 10.5 Registrar WebGoat
 
-Durante el reconocimiento, OWASP ZAP realiza automáticamente un análisis pasivo de las respuestas del servidor, detectando posibles problemas de configuración sin alterar el funcionamiento de las aplicaciones.
+Acceder a:
 
-## 11.1 Visualizar las Passive Alerts
+```text
+http://localhost:8081/WebGoat
+```
 
-1. Abrir el panel **Alerts**.
-2. Revisar las alertas clasificadas por nivel de riesgo.
-3. Verificar que se hayan generado hallazgos iniciales para las aplicaciones analizadas.
+Explorar algunas lecciones iniciales:
+
+- SQL Injection
+- Cross Site Scripting
+- Access Control
 
 ### Evidencia
 
-![Passive Alerts](../evidencias/capturas/31-passive-alerts.png)
+![Registro WebGoat](../evidencias/capturas/31-webgoat-registrado.png)
+
+---
+
+## 10.6 Verificar el árbol de sitios
+
+Al finalizar la navegación las aplicaciones deberán aparecer registradas en el panel:
+
+```text
+Sites
+```
+
+Se espera visualizar:
+
+```text
+http://localhost:8080
+http://localhost:3000
+http://localhost:8081
+```
+
+### Evidencia
+
+![Aplicaciones registradas](../evidencias/capturas/32-sitios-registrados.png)
+
+---
+
+# Paso 11. Descubrimiento de recursos mediante Spider
+
+La herramienta Spider permite descubrir automáticamente páginas, rutas, formularios y recursos presentes dentro de cada aplicación.
+
+---
+
+## 11.1 Ejecutar Spider sobre DVWA
+
+1. Seleccionar:
+
+```text
+http://localhost:8080
+```
+
+2. Hacer clic derecho:
+
+```text
+Attack → Spider
+```
+
+3. Iniciar el análisis.
+
+### Evidencia
+
+![Spider DVWA](../evidencias/capturas/33-spider-dvwa.png)
+
+---
+
+## 11.2 Ejecutar Spider sobre OWASP Juice Shop
+
+1. Seleccionar:
+
+```text
+http://localhost:3000
+```
+
+2. Ejecutar:
+
+```text
+Attack → Spider
+```
+
+### Evidencia
+
+![Spider Juice Shop](../evidencias/capturas/34-spider-juiceshop.png)
+
+---
+
+## 11.3 Ejecutar Spider sobre WebGoat
+
+1. Seleccionar:
+
+```text
+http://localhost:8081
+```
+
+2. Ejecutar:
+
+```text
+Attack → Spider
+```
+
+### Evidencia
+
+![Spider WebGoat](../evidencias/capturas/35-spider-webgoat.png)
+
+---
+
+# Paso 12. Descubrimiento de contenido dinámico mediante AJAX Spider
+
+Las aplicaciones modernas utilizan JavaScript para generar contenido dinámico. OWASP ZAP utiliza AJAX Spider para identificar este tipo de recursos.
+
+---
+
+## 12.1 Ejecutar AJAX Spider sobre DVWA
+
+1. Seleccionar:
+
+```text
+http://localhost:8080
+```
+
+2. Ejecutar:
+
+```text
+Attack → AJAX Spider
+```
+
+### Evidencia
+
+![AJAX Spider DVWA](../evidencias/capturas/36-ajax-dvwa.png)
+
+---
+
+## 12.2 Ejecutar AJAX Spider sobre OWASP Juice Shop
+
+1. Seleccionar:
+
+```text
+http://localhost:3000
+```
+
+2. Ejecutar:
+
+```text
+Attack → AJAX Spider
+```
+
+### Evidencia
+
+![AJAX Spider Juice Shop](../evidencias/capturas/37-ajax-juiceshop.png)
+
+---
+
+## 12.3 Ejecutar AJAX Spider sobre WebGoat
+
+1. Seleccionar:
+
+```text
+http://localhost:8081
+```
+
+2. Ejecutar:
+
+```text
+Attack → AJAX Spider
+```
+
+### Evidencia
+
+![AJAX Spider WebGoat](../evidencias/capturas/38-ajax-webgoat.png)
+
+---
+
+# Paso 13. Verificación del árbol de recursos descubiertos
+
+Una vez finalizados los procesos de reconocimiento se verificó que OWASP ZAP hubiera identificado correctamente las rutas internas de cada aplicación.
+
+Entre los recursos descubiertos se encontraron:
+
+### DVWA
+
+- /login.php
+- /vulnerabilities/
+- /security.php
+- /setup.php
+
+### Juice Shop
+
+- /rest/products
+- /api
+- /assets
+
+### WebGoat
+
+- /WebGoat
+- /lesson
+- /start.mvc
+
+### Evidencia
+
+![Árbol de recursos descubierto](../evidencias/capturas/39-arbol-sitios.png)
+
+---
+
+# Paso 14. Revisar las alertas pasivas
+
+Durante el reconocimiento OWASP ZAP ejecuta automáticamente un análisis pasivo de las respuestas del servidor sin modificar el comportamiento de las aplicaciones.
+
+Entre las alertas identificadas se encontraron:
+
+- Missing Security Headers
+- Missing Anti-CSRF Token
+- Cookie sin atributo HttpOnly
+- Cookie sin atributo Secure
+- Information Disclosure
+
+### Evidencia
+
+![Alertas pasivas](../evidencias/capturas/40-alertas-pasivas.png)
 
 ---
 
@@ -640,13 +938,13 @@ Durante el reconocimiento, OWASP ZAP realiza automáticamente un análisis pasiv
 
 Al finalizar esta fase deberán encontrarse disponibles:
 
-* OWASP ZAP instalado correctamente.
-* Las aplicaciones DVWA, OWASP Juice Shop y WebGoat registradas en OWASP ZAP.
-* Reconocimiento mediante **Spider** realizado.
-* Reconocimiento mediante **AJAX Spider** realizado.
-* Alertas pasivas generadas correctamente.
-* Evidencias documentadas de cada actividad desarrollada.
+- OWASP ZAP correctamente configurado.
+- Proxy local configurado sin conflictos de puertos.
+- Aplicaciones DVWA, OWASP Juice Shop y WebGoat registradas en el árbol de sitios.
+- Reconocimiento mediante Spider completado.
+- Reconocimiento mediante AJAX Spider completado.
+- Árbol de recursos descubierto correctamente.
+- Alertas pasivas generadas.
+- Evidencias documentadas de cada actividad desarrollada.
 
-La Persona 3 utilizará la información recopilada durante esta fase para ejecutar los análisis activos (Active Scan) y evaluar las vulnerabilidades correspondientes al OWASP Top 10.
-
-
+La información recopilada durante esta etapa será utilizada posteriormente por la Persona 3 para ejecutar los análisis activos y evaluar las vulnerabilidades correspondientes al OWASP Top 10.
