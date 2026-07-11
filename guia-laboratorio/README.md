@@ -877,3 +877,200 @@ Entre las alertas identificadas se encontraron:
 ![Alertas pasivas](../evidencias/capturas/31-passive-alerts.png)
 
 ---
+
+## Paso 15. Preparar DVWA para el Active Scan
+
+Para maximizar la detección de vulnerabilidades se configuró DVWA con el nivel de seguridad más bajo disponible.
+
+### Iniciar sesión en DVWA
+
+URL utilizada:
+
+```text
+http://localhost:8080
+```
+
+Credenciales:
+
+```text
+Usuario: admin
+Contraseña: password
+```
+
+### Configurar el nivel de seguridad
+
+Ruta:
+
+```text
+DVWA Security → Low → Submit
+```
+
+Esta configuración permite que las vulnerabilidades permanezcan completamente expuestas para ser detectadas por OWASP ZAP.
+
+![DVWA Security Low](../evidencias/capturas/33-dvwa-security-low.png)
+
+---
+
+## Paso 16. Ejecutar el Active Scan sobre DVWA
+
+En el panel `Sites` se seleccionó:
+
+```text
+http://localhost:8080
+```
+
+Posteriormente:
+
+```text
+Click derecho
+→ Attack
+→ Active Scan
+→ Start Scan
+```
+
+Se utilizó la configuración predeterminada:
+
+- Context: Default Context
+- Policy: Default Policy
+
+Durante esta fase OWASP ZAP comenzó a enviar automáticamente payloads correspondientes a distintas categorías de ataque como:
+
+- SQL Injection
+- Cross Site Scripting
+- Command Injection
+- Path Traversal
+
+![Active Scan DVWA](../evidencias/capturas/34-active-scan-dvwa-progreso.png)
+
+---
+
+## Paso 17. Ejecutar el Active Scan sobre Juice Shop y WebGoat
+
+Se repitió el mismo procedimiento para las aplicaciones restantes.
+
+### Juice Shop
+
+```text
+http://localhost:3000
+```
+
+```text
+Attack
+→ Active Scan
+→ Start Scan
+```
+
+### WebGoat
+
+```text
+http://localhost:8081/WebGoat
+```
+
+```text
+Attack
+→ Active Scan
+→ Start Scan
+```
+
+![Active Scan Juice Shop](../evidencias/capturas/35-active-scan-juiceshop.png)
+
+![Active Scan WebGoat](../evidencias/capturas/36-active-scan-webgoat.png)
+
+---
+
+## Paso 18. Monitorear el progreso del escaneo
+
+Durante el Active Scan se supervisó:
+
+- Porcentaje de progreso.
+- Número de peticiones enviadas.
+- Cantidad de alertas generadas.
+- Estado actual del análisis.
+
+OWASP ZAP permitió pausar o detener el escaneo en cualquier momento si fuese necesario.
+
+---
+
+## Paso 19. Revisar las Alertas Activas
+
+Finalizado el Active Scan se revisaron las alertas activas generadas automáticamente por OWASP ZAP.
+
+A diferencia de las alertas pasivas, estas sí corresponden a intentos reales de explotación realizados por la herramienta.
+
+Entre los hallazgos detectados se encontraron:
+
+- SQL Injection
+- Cross Site Scripting
+- Command Injection
+- Off-site Redirect
+- Vulnerable JavaScript Library
+- Missing Anti-CSRF Token
+
+Para cada alerta se revisó:
+
+- URL afectada.
+- Parámetro vulnerable.
+- Payload utilizado.
+- Evidencia encontrada.
+- Recomendaciones proporcionadas por OWASP ZAP.
+
+![Alertas Activas](../evidencias/capturas/37-alertas-activas-dvwa.png)
+
+---
+
+## Paso 20. Clasificar las vulnerabilidades según OWASP Top 10
+
+| Alerta ZAP | Categoría OWASP Top 10 |
+|-----------|------------------------|
+| SQL Injection | A03:2021 – Injection |
+| Cross Site Scripting | A03:2021 – Injection |
+| Command Injection | A03:2021 – Injection |
+| Missing Anti-CSRF Token | A01:2021 – Broken Access Control |
+| Cookie sin Secure/HttpOnly | A05:2021 – Security Misconfiguration |
+| Missing Security Headers | A05:2021 – Security Misconfiguration |
+| Path Traversal | A01:2021 – Broken Access Control |
+| Weak Session IDs | A07:2021 – Identification and Authentication Failures |
+
+Esta clasificación servirá como base para el informe final elaborado por la Persona 4.
+
+---
+
+## Paso 21. Validación Manual de Hallazgos Críticos
+
+Para incrementar la confiabilidad del informe se realizó una validación manual de la vulnerabilidad de SQL Injection detectada automáticamente por OWASP ZAP.
+
+### URL utilizada
+
+```text
+http://localhost:8080/vulnerabilities/sqli/
+```
+
+### Payload utilizado
+
+```sql
+1' OR '1'='1
+```
+
+La aplicación respondió mostrando múltiples registros de usuarios, demostrando que la consulta SQL podía ser manipulada mediante entradas no validadas.
+
+Esto permitió confirmar manualmente la existencia de la vulnerabilidad.
+
+![Validación Manual SQL Injection](../evidencias/capturas/38-validacion-manual-sqli.png)
+
+---
+
+## Paso 22. Exportar el Reporte Técnico
+
+Finalmente se generó el reporte oficial del análisis realizado por OWASP ZAP.
+
+Ruta utilizada:
+
+```text
+Report
+→ Generate Report
+```
+
+Formatos utilizados:
+
+- HTML
+- PDF
