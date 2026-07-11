@@ -568,10 +568,6 @@ Proxy Principal
 
 5. Guardar la configuración.
 
-### Evidencia
-
-![Configuración del Proxy Local](../evidencias/capturas/25-configuracion-proxy-zap.png)
-
 ---
 
 ## 9.2 Iniciar el navegador controlado por OWASP ZAP
@@ -604,10 +600,6 @@ Iniciar Navegador
 
 El navegador será iniciado automáticamente utilizando el proxy configurado por OWASP ZAP.
 
-### Evidencia
-
-![Navegador iniciado desde ZAP](../evidencias/capturas/26-navegador-zap.png)
-
 ---
 
 # Paso 10. Registro de aplicaciones en OWASP ZAP
@@ -631,10 +623,6 @@ Usuario: admin
 Contraseña: password
 ```
 
-### Evidencia
-
-![Login DVWA](../evidencias/capturas/27-login-dvwa.png)
-
 ---
 
 ## 10.2 Navegar manualmente por DVWA
@@ -652,10 +640,6 @@ Se accedió a:
 - File Upload
 - CSRF
 - Weak Session IDs
-
-### Evidencia
-
-![Navegación manual DVWA](../evidencias/capturas/29-dvwa-manual-browse.png)
 
 ---
 
@@ -675,10 +659,6 @@ Recorrer las principales funcionalidades:
 - Carrito de compras
 - Menú lateral
 
-### Evidencia
-
-![Registro Juice Shop](../evidencias/capturas/30-juiceshop-registrado.png)
-
 ---
 
 ## 10.4 Registrar WebGoat
@@ -694,10 +674,6 @@ Explorar algunas lecciones iniciales:
 - SQL Injection
 - Cross Site Scripting
 - Access Control
-
-### Evidencia
-
-![Registro WebGoat](../evidencias/capturas/31-webgoat-registrado.png)
 
 ---
 
@@ -882,10 +858,6 @@ Entre los recursos descubiertos se encontraron:
 - /lesson
 - /start.mvc
 
-### Evidencia
-
-![Árbol de recursos descubierto](../evidencias/capturas/39-arbol-sitios.png)
-
 ---
 
 # Paso 14. Revisar las alertas pasivas
@@ -905,18 +877,3 @@ Entre las alertas identificadas se encontraron:
 ![Alertas pasivas](../evidencias/capturas/31-passive-alerts.png)
 
 ---
-
-# Entregables para la Persona 2
-
-Al finalizar esta fase deberán encontrarse disponibles:
-
-- OWASP ZAP correctamente configurado.
-- Proxy local configurado sin conflictos de puertos.
-- Aplicaciones DVWA, OWASP Juice Shop y WebGoat registradas en el árbol de sitios.
-- Reconocimiento mediante Spider completado.
-- Reconocimiento mediante AJAX Spider completado.
-- Árbol de recursos descubierto correctamente.
-- Alertas pasivas generadas.
-- Evidencias documentadas de cada actividad desarrollada.
-
-La información recopilada durante esta etapa será utilizada posteriormente por la Persona 3 para ejecutar los análisis activos y evaluar las vulnerabilidades correspondientes al OWASP Top 10.
