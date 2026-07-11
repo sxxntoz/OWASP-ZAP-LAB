@@ -1066,8 +1066,8 @@ Finalmente se generó el reporte oficial del análisis realizado por OWASP ZAP.
 Ruta utilizada:
 
 ```text
-Report
-→ Generate Report
+Informe
+→Generar informe
 ```
 
 Formatos utilizados:
