@@ -637,35 +637,7 @@ Contraseña: password
 
 ---
 
-## 10.2 Configurar el nivel de seguridad de DVWA
-
-1. Ingresar al módulo:
-
-```text
-DVWA Security
-```
-
-2. Seleccionar el nivel:
-
-```text
-Low
-```
-
-3. Presionar:
-
-```text
-Submit
-```
-
-Este nivel permitirá que las vulnerabilidades se encuentren disponibles durante las siguientes fases del laboratorio.
-
-### Evidencia
-
-![DVWA Security Low](../evidencias/capturas/28-dvwa-security-low.png)
-
----
-
-## 10.3 Navegar manualmente por DVWA
+## 10.2 Navegar manualmente por DVWA
 
 Con el objetivo de registrar rutas y recursos adicionales dentro de OWASP ZAP se recorrieron manualmente los principales módulos vulnerables de la aplicación.
 
@@ -687,7 +659,7 @@ Se accedió a:
 
 ---
 
-## 10.4 Registrar OWASP Juice Shop
+## 10.3 Registrar OWASP Juice Shop
 
 Acceder a:
 
@@ -709,7 +681,7 @@ Recorrer las principales funcionalidades:
 
 ---
 
-## 10.5 Registrar WebGoat
+## 10.4 Registrar WebGoat
 
 Acceder a:
 
@@ -729,7 +701,7 @@ Explorar algunas lecciones iniciales:
 
 ---
 
-## 10.6 Verificar el árbol de sitios
+## 10.5 Verificar el árbol de sitios
 
 Al finalizar la navegación las aplicaciones deberán aparecer registradas en el panel:
 
